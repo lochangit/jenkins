@@ -1,6 +1,6 @@
 def ab_eme_branch_list = []
 
-node('master') {
+node('jenkins-agent-01') {
    stage('get active branches') {
        // get branch list
        def ab_eme_branches = sh script: "ls -l /home", returnStdout:true
