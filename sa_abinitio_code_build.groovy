@@ -19,20 +19,33 @@ pipeline {
     choice(name: 'ABI_BUILD_BRANCH', choices: ab_eme_branch_list, description: 'Abinitio eme branch')
     choice(name: 'ABI_CHECKOUT_ENV', choices: ['BATCH', 'ONLINE', 'BATCH_AND_ONLINE'], description: 'Code checkout environment')
     choice(name: 'ABI_BUILD_DOMAIN', choices: ['con', 'com', 'ids', 'cnc', 'ufo', 'uda'], description: 'Build domain name')
-    booleanParam(name: 'ABI_MAJOR_RELEASE', defaultValue: false, description: 'Is major code release?')
+    choice(name: 'ABI_RELEASE_SCOPE', choices: ['major', 'minor', 'patch'], description: 'Code release scope')
     choice(name: 'ABI_TAG_SCOPE', choices: ['exact', 'project', 'eme'], description: 'Abinitio tag scope')
     choice(name: 'ABI_TAG_TYPE', choices: ['build', 'test', 'backup', 'super'], description: 'Abinitio tag type')
     text(name: 'ABI_TAG_OBJECTS', defaultValue: '', description: 'Enter the objects to tag')
-    booleanParam(name: 'FORCE_BUILD', defaultValue: false, description: 'Refresh pipeline without build?')
+    booleanParam(name: 'FORCE_BUILD', defaultValue: false, description: 'Force build with no validations')
   }
 
-  stages {
-    stage('Example') {
-      steps {
-        /* WRONG! */
-        sh("echo ${ABI_BUILD_TASK_ID}")
-      }
-    }
+  // Add timestamps to the console log
+  options {
+    timestamps()
   }
+
+    stages {
+        stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+    }
+
 }
 
