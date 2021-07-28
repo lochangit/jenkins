@@ -37,14 +37,14 @@ pipeline {
                 message "Continue with build?"
                 ok "Yes"
                 parameters {
-                    	string(name: 'ABI_BUILD_TASK_ID', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'ABI_CHECKOUT_ENV', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'ABI_BUILD_DOMAIN', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
-			string(name: 'FORCE_BUILD', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+                    	string(name: 'ABI_BUILD_TASK_ID', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_CHECKOUT_ENV', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_BUILD_DOMAIN', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'FORCE_BUILD', defaultValue: params.ABI_BUILD_TASK_ID)
                 }
             }
             steps {
