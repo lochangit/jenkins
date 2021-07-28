@@ -37,18 +37,18 @@ pipeline {
                 message "Continue with build?"
                 ok "Yes"
                 parameters {
-                    	string(name: 'ABI_BUILD_TASK_ID', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'ABI_BUILD_BRANCH', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'ABI_CHECKOUT_ENV', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'ABI_BUILD_DOMAIN', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'ABI_RELEASE_SCOPE', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'ABI_TAG_SCOPE', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'ABI_TAG_TYPE', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
-			string(name: 'FORCE_BUILD', defaultValue: ${ABI_BUILD_TASK_ID}, description: 'Who should I say hello to?')
+                    	string(name: 'ABI_BUILD_TASK_ID', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'ABI_CHECKOUT_ENV', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'ABI_BUILD_DOMAIN', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
+			string(name: 'FORCE_BUILD', defaultValue: params.ABI_BUILD_TASK_ID, description: 'Who should I say hello to?')
                 }
             }
             steps {
-                echo "Hello, ${ABI_BUILD_TASK_ID}, nice to meet you."
+                echo "Hello, params.ABI_BUILD_TASK_ID, nice to meet you."
             }
         }
     }
