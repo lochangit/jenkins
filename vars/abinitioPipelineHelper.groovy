@@ -1,5 +1,3 @@
-#!/usr/bin/env groovy
-
 /* Echo environment parameter */
 def echoEnvVars() {
 	CURR_JAVA_VERSION = sh "java --version"
