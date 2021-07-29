@@ -53,7 +53,7 @@ pipeline {
 
             	steps {
                 	script { 
-                    		abinitioPipelineHelper.echoEnvVars
+                    		abinitioPipelineHelper.echoEnvVars()
                 	}
             	}
         }
