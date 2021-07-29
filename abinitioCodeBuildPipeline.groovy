@@ -52,7 +52,7 @@ pipeline {
             }
 
             	steps {
-                	abinitioPipelineHelper()
+                	abinitioPipelineHelper.echoEnvVars
             	}
         }
     }
