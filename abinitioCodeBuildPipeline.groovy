@@ -52,7 +52,7 @@ pipeline {
             }
 
             	steps {
-                	echoEnvVars()
+                	abinitioPipelineHelper()
             	}
         }
     }
