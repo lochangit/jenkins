@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-@Library('abinitioPipelineSharedLib')_
+@Library('abinitioPipelineSharedLib') _
 
 
 def ab_eme_branch_list = []
@@ -52,7 +52,9 @@ pipeline {
             }
 
             	steps {
-                	abinitioPipelineHelper.echoEnvVars()
+                	script { 
+                    		abinitioPipelineHelper.echoEnvVars
+                	}
             	}
         }
     }
