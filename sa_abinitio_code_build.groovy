@@ -1,5 +1,8 @@
 #!/usr/bin/env groovy
 
+@Library('sa_abinitio_pipeline_helper.groovy')_
+
+
 def ab_eme_branch_list = []
 
 node('jenkins-agent-01') {
@@ -38,13 +41,13 @@ pipeline {
                 ok "Yes"
                 parameters {
                     	string(name: 'ABI_BUILD_TASK_ID', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'ABI_CHECKOUT_ENV', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'ABI_BUILD_DOMAIN', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_BUILD_TASK_ID)
-			string(name: 'FORCE_BUILD', defaultValue: params.ABI_BUILD_TASK_ID)
+			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_BRANCH)
+			string(name: 'ABI_CHECKOUT_ENV', defaultValue: params.ABI_CHECKOUT_ENV)
+			string(name: 'ABI_BUILD_DOMAIN', defaultValue: params.ABI_BUILD_DOMAIN)
+			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_RELEASE_SCOPE)
+			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_TAG_SCOPE)
+			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_TAG_TYPE)
+			string(name: 'FORCE_BUILD', defaultValue: params.FORCE_BUILD)
                 }
             }
             steps {

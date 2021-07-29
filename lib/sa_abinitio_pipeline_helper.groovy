@@ -1,38 +1,17 @@
 #!/usr/bin/env groovy
 
-def ab_eme_branch_list = []
-
-node('jenkins-agent-01') {
-   stage('Pre build') {
-       // Pre build configuration stage
-       def ab_eme_branches = sh script: "ls -l /home", returnStdout:true
-       ab_eme_branch_list = ab_eme_branches.trim().tokenize("\n")
-   }
-}
-
-
-pipeline {
-  agent any
-  parameters {
-    booleanParam(name: 'REFRESH_PIPELINE', defaultValue: false, description: 'Refresh pipeline without build?')
-    string(name: 'ABI_BUILD_TASK_ID', defaultValue: 'Task Id', description: 'Build task id. Format:Userstory_TaskId, Userstory_DefectId')
-    choice(name: 'ABI_BUILD_BRANCH', choices: ab_eme_branch_list, description: 'Abinitio eme branch')
-    choice(name: 'ABI_CHECKOUT_ENV', choices: ['BATCH', 'ONLINE', 'BATCH_AND_ONLINE'], description: 'Code checkout environment')
-    choice(name: 'ABI_BUILD_DOMAIN', choices: ['con', 'com', 'ids', 'cnc', 'ufo', 'uda'], description: 'Build domain name')
-    booleanParam(name: 'ABI_MAJOR_RELEASE', defaultValue: false, description: 'Is major code release?')
-    choice(name: 'ABI_TAG_SCOPE', choices: ['exact', 'project', 'eme'], description: 'Abinitio tag scope')
-    choice(name: 'ABI_TAG_TYPE', choices: ['build', 'test', 'backup', 'super'], description: 'Abinitio tag type')
-    text(name: 'ABI_TAG_OBJECTS', defaultValue: '', description: 'Enter the objects to tag')
-    booleanParam(name: 'FORCE_BUILD', defaultValue: false, description: 'Refresh pipeline without build?')
-  }
-
-  stages {
-    stage('Example') {
-      steps {
-        /* WRONG! */
-        sh("echo ${ABI_BUILD_TASK_ID}")
-      }
-    }
-  }
+/* Echo environment parameter */
+def echoEnvVars() {
+	CURR_JAVA_VERSION = sh "java --version"
+	CURR_HOST_NAME = sh "hostname"
+	echo "Build number : ${CURR_JAVA_VERSION}"
+	echo "Build number : ${CURR_HOST_NAME}"
+        echo "Build number : ${env.BUILD_NUMBER}"	
+	echo "Current working dir : ${pwd()}"
+    	echo "Path : ${env.PATH}"    
+    	echo "Abinitio EME host : ${env.ABI_EME_HOST}" 
+        echo "Abinitio EME root : ${env.ABI_EME_ROOT}" 
+	echo "Working directory : ${env.BUILD_WORK_DIR}" 
+	echo "Log directory : ${env.BUILD_LOG_DIR}"
 }
 
