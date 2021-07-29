@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-@Library('sa_abinitio_pipeline_helper.groovy')_
+@Library('sa_abinitio_pipeline_helper')_
 
 
 def ab_eme_branch_list = []
