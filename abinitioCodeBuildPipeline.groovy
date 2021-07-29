@@ -37,9 +37,9 @@ pipeline {
     stages {
         stage('Example') {
             input {
-                message "Continue with build?"
-                ok "Yes"
-                parameters {
+                	message "Continue with build?"
+                	ok "Yes"
+                	parameters {
                     	string(name: 'ABI_BUILD_TASK_ID', defaultValue: params.ABI_BUILD_TASK_ID)
 			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_BRANCH)
 			string(name: 'ABI_CHECKOUT_ENV', defaultValue: params.ABI_CHECKOUT_ENV)
@@ -48,11 +48,12 @@ pipeline {
 			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_TAG_SCOPE)
 			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_TAG_TYPE)
 			string(name: 'FORCE_BUILD', defaultValue: params.FORCE_BUILD)
-                }
+                	}
             }
-            steps {
-                echoEnvVars
-            }
+
+            	steps {
+                	echoEnvVars()
+            	}
         }
     }
 
