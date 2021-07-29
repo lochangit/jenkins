@@ -51,7 +51,7 @@ pipeline {
                 }
             }
             steps {
-                echo "Hello, params.ABI_BUILD_TASK_ID, nice to meet you."
+                echoEnvVars
             }
         }
     }
