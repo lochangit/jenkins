@@ -53,9 +53,11 @@ pipeline {
             }
 
             	steps {
-                	//script { 
+                	script { 
+				currentBuild.displayName = params.ABI_BUILD_TASK_ID
                     		pipelineHelper.echoEnvVars()
-                	//}
+
+                	}
             	}
         }
     }
