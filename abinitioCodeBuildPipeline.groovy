@@ -47,13 +47,13 @@ pipeline {
 			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_RELEASE_SCOPE)
 			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_TAG_SCOPE)
 			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_TAG_TYPE)
-			//string(name: 'FORCE_BUILD', defaultValue: params.FORCE_BUILD.toString())
+			string(name: 'FORCE_BUILD', defaultValue: String.valueOf(params.FORCE_BUILD))
                 	}
             }
 
             	steps {
                 	script { 
-                    		abinitioPipelineHelper.echoEnvVars()
+                    		pipelineHelper.echoEnvVars()
                 	}
             	}
         }
