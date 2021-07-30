@@ -47,7 +47,7 @@ pipeline {
 			string(name: 'ABI_RELEASE_SCOPE', defaultValue: params.ABI_RELEASE_SCOPE)
 			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_TAG_SCOPE)
 			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_TAG_TYPE)
-			string(name: 'FORCE_BUILD', defaultValue: FORCE_BUILD.toString())
+			string(name: 'FORCE_BUILD', defaultValue: FORCE_BUILD.getClass().toString())
                 	}
             }
 
