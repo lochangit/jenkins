@@ -54,7 +54,7 @@ pipeline {
 
             	steps {
                 	script { 
-				currentBuild.displayName = params.ABI_BUILD_TASK_ID
+				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                     		pipelineHelper.echoEnvVars()
 
                 	}
