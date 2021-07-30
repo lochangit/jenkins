@@ -21,7 +21,7 @@ pipeline {
     string(name: 'ABI_BUILD_TASK_ID', defaultValue: 'Task Id', description: 'Build task id. Format:Userstory_TaskId, Userstory_DefectId')
     string(name: 'ABI_BUILD_COMMENT', defaultValue: 'Task Id', description: 'Build task id. Format:Userstory_TaskId, Userstory_DefectId')
     choice(name: 'ABI_BUILD_BRANCH', choices: ab_eme_branch_list, description: 'Abinitio eme branch')
-    choice(name: 'ABI_CHECKOUT_ENV', choices: ['BATCH', 'ONLINE', 'BATCH_AND_ONLINE'], description: 'Code checkout environment')
+    choice(name: 'ABI_CHECKOUT_ENV', choices: ['batch', 'online', 'batch_and_online'], description: 'Code checkout environment')
     choice(name: 'ABI_BUILD_DOMAIN', choices: ['con', 'com', 'ids', 'cnc', 'ufo', 'uda'], description: 'Build domain name')
     choice(name: 'ABI_RELEASE_SCOPE', choices: ['minor', 'patch', 'major'], description: 'Code release scope')
     choice(name: 'ABI_TAG_SCOPE', choices: ['exact', 'project', 'eme'], description: 'Abinitio tag scope')
@@ -35,8 +35,14 @@ pipeline {
     timestamps()
   }
 
+  environment {
+    //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+    IMAGE = readMavenPom().getArtifactId()
+    VERSION = readMavenPom().getVersion()
+  }
+
     stages {
-        stage('Example') {
+        stage('Initialize') {
             input {
                 	message "Continue with build?"
                 	ok "Yes"
@@ -56,7 +62,6 @@ pipeline {
                 	script { 
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                     		pipelineHelper.echoEnvVars()
-
                 	}
             	}
         }
