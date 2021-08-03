@@ -55,11 +55,11 @@ pipeline {
             }
 
             	steps {
-                	//script { 
+                	script { 
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                     		//pipelineHelper.echoEnvVars()
 				abinitioPipelineHelper
-                	//}
+                	}
             	}
         }
     }
