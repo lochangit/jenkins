@@ -60,7 +60,7 @@ pipeline {
                     		//pipelineHelper.echoEnvVars()
                 	}
 
-		        setEnvVariables(name: "abinitioEnvAgent01.env")
+		        readFileAsListHelper(name: "abinitioEnvAgent01.env")
             	}
         }
     }
