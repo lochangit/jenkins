@@ -3,6 +3,7 @@
 @Library('abinitioPipelineSharedLib') _
 
 
+// Derive the branch names dynamically to be added to build parameters
 def ab_eme_branch_list = []
 
 node('jenkins-agent-01') {
@@ -36,6 +37,11 @@ pipeline {
     timestamps()
   }
 
+  // Set additional environment variables
+
+  environment {
+     setEnvVariables(name: "abinitioEnvAgent01.env")
+  }
 
     stages {
         stage('Initialize') {
@@ -56,12 +62,12 @@ pipeline {
 
             	steps {
                 	script { 
+				// Customize the build display name with task id prefixed to build number
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
-                    		//pipelineHelper.echoEnvVars()
                 	}
 
-		        //readFileAsListHelper(name: "abinitioEnvAgent01.env")
-			setEnvVariables(name: "abinitioEnvAgent01.env")
+
+			//setEnvVariables(name: "abinitioEnvAgent01.env")
             	}
         }
     }
