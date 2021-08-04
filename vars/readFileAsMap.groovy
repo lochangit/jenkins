@@ -7,7 +7,7 @@ def call(Map fileName = [:]) {
   def fileContents = libraryResource "${fileName.name}"   
   def map 	   = [:] 
 
-	map = data.tokenize("\n").collectEntries {
+	map = fileContents.tokenize("\n").collectEntries {
     			it.tokenize("=").with {
         			[(it[0]):it[1]]
     			}
