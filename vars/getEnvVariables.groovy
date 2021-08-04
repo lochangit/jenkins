@@ -5,17 +5,17 @@
 
 def call(Map envConfig = [:]) {
 
-    	def varMap = []
+    	def varMap = [:]
 	def varValue = 'none'
 
     	if( envConfig.nodeName == 'jenkins-agent-01' ){
-        	varMap 	 = readFileAsList(name: "abinitioEnvAgent01.env")  
+        	varMap 	 = readFileAsMap(name: "abinitioEnvAgent01.env")  
 		varMap.each{ k, v -> println "${k}:${v}" }    
 		//varValue = varMap[${envConfig.variableName}] ?: "novalue1"
     	}
     	else {
 		
-        	varMap 	 = readFileAsList(name: "abinitioEnvAgent02.env")
+        	varMap 	 = readFileAsMap(name: "abinitioEnvAgent02.env") 
 		varMap.each{ k, v -> println "${k}:${v}" }
 		//varValue = varMap[${envConfig.variableName}] ?: "default"
     	}
