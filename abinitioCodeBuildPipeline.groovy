@@ -6,9 +6,9 @@
 // Derive the branch names dynamically to be added to build parameters
 def ab_eme_branch_list = []
 
+// Pre build configuration stage
 node('jenkins-agent-01') {
    stage('Pre build') {
-       // Pre build configuration stage
        def ab_eme_branches = sh script: "ls -l /home", returnStdout:true
        ab_eme_branch_list = ab_eme_branches.trim().tokenize("\n")
    }
@@ -40,7 +40,7 @@ pipeline {
   // Set additional environment variables
 
   environment {
-     setEnvVariables(name: "abinitioEnvAgent01.env")
+	ABI_ENV_EME_HOST=getEnvVariables(nodeName : env.NODE_NAME, variableName : "ABI_ENV_EME_HOST")
   }
 
     stages {
@@ -66,7 +66,7 @@ pipeline {
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                 	}
 
-
+			echo env.NODE_NAME
 			//setEnvVariables(name: "abinitioEnvAgent01.env")
             	}
         }
