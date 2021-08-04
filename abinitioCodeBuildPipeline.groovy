@@ -66,7 +66,7 @@ pipeline {
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                 	}
 
-			echo env.NODE_NAME
+			echo env.ABI_ENV_EME_HOST
 			//setEnvVariables(name: "abinitioEnvAgent01.env")
             	}
         }
