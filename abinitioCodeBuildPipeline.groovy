@@ -39,9 +39,9 @@ pipeline {
 
   // Set additional environment variables
 
-  environment {
+  //environment {
 	ABI_ENV_EME_HOST=getEnvVariables(nodeName : env.NODE_NAME, variableName : "ABI_ENV_EME_HOST")
-  }
+ // }
 
     stages {
         stage('Initialize') {
