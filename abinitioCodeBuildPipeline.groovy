@@ -18,6 +18,8 @@ node('jenkins-agent-01') {
 
 pipeline {
   agent any
+
+  // Build input parameters to be supplied by user
   parameters {
     booleanParam(name: 'REFRESH_PIPELINE', defaultValue: false, description: 'Refresh pipeline without build?')
     string(name: 'ABI_BUILD_TASK_ID', defaultValue: 'Task Id', description: 'Build task id. Format:Userstory_TaskId, Userstory_DefectId')
@@ -37,11 +39,6 @@ pipeline {
     timestamps()
   }
 
-  // Set additional environment variables
-
-  environment {
-	ABI_ENV_EME_HOST=getEnvVariables(nodeName : env.NODE_NAME, variableName : "ABI_ENV_EME_HOST")
-  }
 
     stages {
         stage('Initialize') {
@@ -65,9 +62,6 @@ pipeline {
 				// Customize the build display name with task id prefixed to build number
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                 	}
-
-			echo env.ABI_ENV_EME_HOST
-			//setEnvVariables(name: "abinitioEnvAgent01.env")
             	}
         }
     }
