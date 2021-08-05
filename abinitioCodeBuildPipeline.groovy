@@ -62,6 +62,9 @@ pipeline {
 				// Customize the build display name with task id prefixed to build number
 				currentBuild.displayName = "${ABI_BUILD_TASK_ID}#${BUILD_NUMBER}"
                 	}
+
+			// Validate input parameters
+			abinitioPipelineValidateInput(taskId : params.ABI_BUILD_TASK_ID)		       
             	}
         }
     }
