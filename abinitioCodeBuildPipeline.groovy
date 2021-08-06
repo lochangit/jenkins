@@ -56,7 +56,6 @@ pipeline {
 			string(name: 'ABI_TAG_SCOPE', defaultValue: params.ABI_TAG_SCOPE)
 			string(name: 'ABI_TAG_TYPE', defaultValue: params.ABI_TAG_TYPE)
 			booleanParam(name: 'FORCE_BUILD', defaultValue: params.FORCE_BUILD)
-			string(name: 'ABI_TAG_OBJECTS', defaultValue: params.ABI_TAG_OBJECTS)
                 	}
             }
 
@@ -73,17 +72,30 @@ pipeline {
     		post {
 
         		success {
-            			echo 'Initialization complete with following parameters : '
-				echo "REFRESH_PIPELINE : " + (params.REFRESH_PIPELINE ? "True" : "False")
-				echo "REFRESH_PIPELINE : ${params.REFRESH_PIPELINE}.toString()"
+            			echo "Initialization complete with following parameters : "
+
+                                if(params.REFRESH_PIPELINE){  
+        				echo "REFRESH_PIPELINE : True"
+    				} else {
+        				echo "REFRESH_PIPELINE : False"
+    				}
+
                     		echo "ABI_BUILD_TASK_ID : ${params.ABI_BUILD_TASK_ID}"
+                    		echo "ABI_BUILD_COMMENT : ${params.ABI_BUILD_COMMENT}"
 				echo "ABI_BUILD_BRANCH : ${params.ABI_BUILD_BRANCH}"
 				echo "ABI_CHECKOUT_ENV : ${params.ABI_CHECKOUT_ENV}"
 				echo "ABI_BUILD_DOMAIN : ${params.ABI_BUILD_DOMAIN}"
 				echo "ABI_RELEASE_SCOPE : ${params.ABI_RELEASE_SCOPE}"
 				echo "ABI_TAG_SCOPE : ${params.ABI_TAG_SCOPE}"
 				echo "ABI_TAG_TYPE : ${params.ABI_TAG_TYPE}"
-				echo "FORCE_BUILD : " + (params.FORCE_BUILD ? "True" : "False")
+
+                                if(params.FORCE_BUILD){  
+        				echo "FORCE_BUILD : True"
+    				} else {
+        				echo "FORCE_BUILD : False"
+    				}
+
+				echo "ABI_TAG_OBJECTS : ${params.ABI_TAG_OBJECTS}"
         		}
 
         		failure {
