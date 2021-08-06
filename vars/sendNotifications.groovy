@@ -14,7 +14,6 @@ def call(String buildStatus = 'STARTED') {
     <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>"""
 
   emailext (
-      to: 'lochan2312@gmail.com',
       subject: subject,
       body: details,
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
