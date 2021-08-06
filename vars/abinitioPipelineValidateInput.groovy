@@ -10,7 +10,7 @@ def call(Map inputParams = [:]) {
     	}
 
 	// Validation for task comment
-    	if( inputParams.taskComments == null ) {
+        if (!inputParams.taskComments?.trim()) {
         	 throw new Exception("Invalid task comments : ${inputParams.taskComments}.Correct and resubmit build") 
     	}
 
