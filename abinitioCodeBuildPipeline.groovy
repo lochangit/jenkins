@@ -1,4 +1,3 @@
-#!/usr/bin/env groovy
 
 @Library('abinitioPipelineSharedLib') _
 
@@ -73,8 +72,13 @@ pipeline {
         		success {
             			echo "Initialization complete with following parameters : "
 
-				when { expression { params.REFRESH_PIPELINE } }
-					echo "REFRESH_PIPELINE : True"
+                		script { 
+    					if(params.REFRESH_PIPELINE) {
+        					echo "REFRESH_PIPELINE : True"
+    					} else {
+        					echo "REFRESH_PIPELINE : False"
+    					}
+                		}
 
                     		echo "ABI_BUILD_TASK_ID : ${params.ABI_BUILD_TASK_ID}"
                     		echo "ABI_BUILD_COMMENT : ${params.ABI_BUILD_COMMENT}"
