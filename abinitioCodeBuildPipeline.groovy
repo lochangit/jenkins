@@ -65,7 +65,15 @@ pipeline {
                 	}
 
 			// Validate input parameters
-			abinitioPipelineValidateInput(taskId : params.ABI_BUILD_TASK_ID, taskComments : params.ABI_BUILD_COMMENT)		       
+			abinitioPipelineValidateInput(taskId 		: params.ABI_BUILD_TASK_ID, 
+						      taskComments 	: params.ABI_BUILD_COMMENT
+						      buildBranch 	: params.ABI_BUILD_BRANCH
+						      checkoutEnv 	: params.ABI_CHECKOUT_ENV
+						      buildDomain 	: params.ABI_BUILD_DOMAIN
+						      releaseScope 	: params.ABI_RELEASE_SCOPE
+						      tagScope 		: params.ABI_TAG_SCOPE
+						      tagType 		: params.ABI_TAG_TYPE
+						      objectList 	: params.ABI_TAG_OBJECTS)		       
             	}
 
     		post {
