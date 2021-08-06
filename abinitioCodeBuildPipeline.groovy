@@ -65,7 +65,7 @@ pipeline {
                 	}
 
 			// Validate input parameters
-			abinitioPipelineValidateInput(taskId : params.ABI_BUILD_TASK_ID)		       
+			abinitioPipelineValidateInput(taskId : params.ABI_BUILD_TASK_ID, taskComments : params.ABI_BUILD_COMMENT)		       
             	}
 
     		post {
@@ -102,6 +102,7 @@ pipeline {
 
         		failure {
             			// sendNotifications currentBuild.result
+                                echo "Build failed"
         		}
     		}
 
