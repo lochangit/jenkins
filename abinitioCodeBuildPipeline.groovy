@@ -74,11 +74,8 @@ pipeline {
         		success {
             			echo "Initialization complete with following parameters : "
 
-                                if (params.REFRESH_PIPELINE) {  
-        				echo "REFRESH_PIPELINE : True"
-    				} else {
-        				echo "REFRESH_PIPELINE : False"
-    				}
+				when { expression { params.REFRESH_PIPELINE } }
+					echo "REFRESH_PIPELINE : True"
 
                     		echo "ABI_BUILD_TASK_ID : ${params.ABI_BUILD_TASK_ID}"
                     		echo "ABI_BUILD_COMMENT : ${params.ABI_BUILD_COMMENT}"
@@ -88,13 +85,6 @@ pipeline {
 				echo "ABI_RELEASE_SCOPE : ${params.ABI_RELEASE_SCOPE}"
 				echo "ABI_TAG_SCOPE : ${params.ABI_TAG_SCOPE}"
 				echo "ABI_TAG_TYPE : ${params.ABI_TAG_TYPE}"
-
-                                if (params.FORCE_BUILD) {  
-        				echo "FORCE_BUILD : True"
-    				} else {
-        				echo "FORCE_BUILD : False"
-    				}
-
 				echo "ABI_TAG_OBJECTS : ${params.ABI_TAG_OBJECTS}"
         		}
 
