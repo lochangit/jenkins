@@ -89,10 +89,18 @@ pipeline {
 				echo "ABI_TAG_SCOPE : ${params.ABI_TAG_SCOPE}"
 				echo "ABI_TAG_TYPE : ${params.ABI_TAG_TYPE}"
 				echo "ABI_TAG_OBJECTS : ${params.ABI_TAG_OBJECTS}"
+
+                		script { 
+    					if(params.FORCE_BUILD) {
+        					echo "FORCE_BUILD : True"
+    					} else {
+        					echo "FORCE_BUILD : False"
+    					}
+                		}
         		}
 
         		failure {
-            			echo 'I failed :('
+            			sendNotifications currentBuild.result
         		}
     		}
 
