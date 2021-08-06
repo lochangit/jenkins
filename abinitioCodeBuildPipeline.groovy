@@ -74,7 +74,7 @@ pipeline {
         		success {
             			echo "Initialization complete with following parameters : "
 
-                                if(params.REFRESH_PIPELINE){  
+                                if (params.REFRESH_PIPELINE) {  
         				echo "REFRESH_PIPELINE : True"
     				} else {
         				echo "REFRESH_PIPELINE : False"
@@ -89,7 +89,7 @@ pipeline {
 				echo "ABI_TAG_SCOPE : ${params.ABI_TAG_SCOPE}"
 				echo "ABI_TAG_TYPE : ${params.ABI_TAG_TYPE}"
 
-                                if(params.FORCE_BUILD){  
+                                if (params.FORCE_BUILD) {  
         				echo "FORCE_BUILD : True"
     				} else {
         				echo "FORCE_BUILD : False"
