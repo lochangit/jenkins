@@ -66,6 +66,19 @@ pipeline {
 			// Validate input parameters
 			abinitioPipelineValidateInput(taskId : params.ABI_BUILD_TASK_ID)		       
             	}
+
+    		post {
+
+        		success {
+            			echo 'Initialization complete with following parameters : '
+                    		echo "ABI_BUILD_TASK_ID ${params.ABI_BUILD_TASK_ID}"
+        		}
+
+        		failure {
+            			echo 'I failed :('
+        		}
+    		}
+
         }
     }
 
