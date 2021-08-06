@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 
 @Library('abinitioPipelineSharedLib') _
 
