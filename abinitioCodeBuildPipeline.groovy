@@ -101,7 +101,7 @@ pipeline {
         		}
 
         		failure {
-            			sendNotifications currentBuild.result
+            			// sendNotifications currentBuild.result
         		}
     		}
 

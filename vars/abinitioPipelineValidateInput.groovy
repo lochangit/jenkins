@@ -8,5 +8,13 @@ def call(Map inputParams = [:]) {
     	if( !(inputParams.taskId ==~ /([a-zA-Z]{2}\d{4}_[a-zA-Z]{2}\d{4})/)) {
         	 throw new Exception("Invalid input task id : ${inputParams.taskId}.Correct and resubmit build") 
     	}
+
+	// Validation for task comment
+    	if( inputParams.taskComments == null ) {
+        	 throw new Exception("Invalid task comments : ${inputParams.taskComments}.Correct and resubmit build") 
+    	}
+
+
+
 }
 
