@@ -46,7 +46,6 @@ pipeline {
                 	message "Continue with build?"
                 	ok "Yes"
                 	parameters {
-			string(name: 'REFRESH_PIPELINE', defaultValue: params.REFRESH_PIPELINE)
                     	string(name: 'ABI_BUILD_TASK_ID', defaultValue: params.ABI_BUILD_TASK_ID)
 			string(name: 'ABI_BUILD_COMMENT', defaultValue: params.ABI_BUILD_COMMENT)
 			string(name: 'ABI_BUILD_BRANCH', defaultValue: params.ABI_BUILD_BRANCH)
