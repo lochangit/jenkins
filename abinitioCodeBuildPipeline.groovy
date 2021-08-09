@@ -148,7 +148,7 @@ pipeline {
 					  releaseScope 	: params.ABI_RELEASE_SCOPE,
 					  tagScope 	: params.ABI_TAG_SCOPE,
 					  tagType 	: params.ABI_TAG_TYPE,
-					  objectList 	: params.ABI_TAG_OBJECTS
+					  objectList 	: params.ABI_TAG_OBJECTS,
 					  tagNames	: env.ABI_TAG_NAMES)
             	}
 
