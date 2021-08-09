@@ -43,7 +43,13 @@ pipeline {
 		ABI_ENV_EME_HOST = ''
 		ABI_ENV_EME_ROOT = ''
 		ABI_ENV_AB_HOME  = ''
-		ABI_TAG_NAME     = ''
+		ABI_TAG_NAMES    = getAbinitioTagName(taskId 		: params.ABI_BUILD_TASK_ID, 
+						      buildBranch 	: params.ABI_BUILD_BRANCH,
+						      buildDomain 	: params.ABI_BUILD_DOMAIN,
+						      releaseScope 	: params.ABI_RELEASE_SCOPE,
+						      tagScope 		: params.ABI_TAG_SCOPE,
+						      tagType 		: params.ABI_TAG_TYPE,
+						      objectList 	: params.ABI_TAG_OBJECTS)
   }
 
     stages {
@@ -135,20 +141,21 @@ pipeline {
 			echo "Creating tag with input parameters..."
 
 			// Create tag
-			createAbinitioTag(taskId		: params.ABI_BUILD_TASK_ID, 
-					  		     taskComments 	: params.ABI_BUILD_COMMENT,
-					  		     buildBranch 	: params.ABI_BUILD_BRANCH,
-					   		     buildDomain 	: params.ABI_BUILD_DOMAIN,
-					  		     releaseScope 	: params.ABI_RELEASE_SCOPE,
-					  		     tagScope 		: params.ABI_TAG_SCOPE,
-					  		     tagType 		: params.ABI_TAG_TYPE,
-					  		     objectList 	: params.ABI_TAG_OBJECTS)
+			createAbinitioTag(taskId 	: params.ABI_BUILD_TASK_ID, 
+					  taskComments 	: params.ABI_BUILD_COMMENT,
+					  buildBranch 	: params.ABI_BUILD_BRANCH,
+					  buildDomain 	: params.ABI_BUILD_DOMAIN,
+					  releaseScope 	: params.ABI_RELEASE_SCOPE,
+					  tagScope 	: params.ABI_TAG_SCOPE,
+					  tagType 	: params.ABI_TAG_TYPE,
+					  objectList 	: params.ABI_TAG_OBJECTS
+					  tagNames	: env.ABI_TAG_NAMES)
             	}
 
     		post {
 
         		success {
-            			echo "Created tag successfully"
+            			echo "Created tag successfully ${env.ABI_TAG_NAMES}"
         		}
 
         		failure {
