@@ -39,6 +39,12 @@ pipeline {
     timestamps()
   }
 
+  environment {
+		ABI_ENV_EME_HOST = ''
+		ABI_ENV_EME_ROOT = ''
+		ABI_ENV_AB_HOME  = ''
+		ABI_TAG_NAME     = ''
+  }
 
     stages {
         stage('Initialize') {
@@ -117,5 +123,48 @@ pipeline {
         }
     }
 
+
+
+        stage('CreateTag') {
+
+  		// Set additional environment variables from configuration files based on agent name
+  		environment {
+		env.ABI_ENV_EME_HOST = getEnvVariables(nodeName : env.NODE_NAME, variableName : "ABI_ENV_EME_HOST")
+		env.ABI_ENV_EME_ROOT = getEnvVariables(nodeName : env.NODE_NAME, variableName : "ABI_ENV_EME_ROOT")
+		env.ABI_ENV_AB_HOME  = getEnvVariables(nodeName : env.NODE_NAME, variableName : "ABI_ENV_AB_HOME")
+  		}
+
+            	steps {
+			echo "Creating tag with input parameters..."
+
+			// Create tag
+			env.ABI_TAG_NAME = createAbinitioTag(taskId		: params.ABI_BUILD_TASK_ID, 
+					  		     taskComments 	: params.ABI_BUILD_COMMENT,
+					  		     buildBranch 	: params.ABI_BUILD_BRANCH,
+					   		     buildDomain 	: params.ABI_BUILD_DOMAIN,
+					  		     releaseScope 	: params.ABI_RELEASE_SCOPE,
+					  		     tagScope 		: params.ABI_TAG_SCOPE,
+					  		     tagType 		: params.ABI_TAG_TYPE,
+					  		     objectList 	: params.ABI_TAG_OBJECTS)
+            	}
+
+    		post {
+
+        		success {
+            			echo "Created tag successfully"
+        		}
+
+        		failure {
+            			// sendNotifications currentBuild.result
+                                echo "Build failed"
+        		}
+    		}
+        }
+
+
+
+
+
+    }
 }
 
