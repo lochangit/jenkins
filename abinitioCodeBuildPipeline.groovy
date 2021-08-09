@@ -135,7 +135,7 @@ pipeline {
 			echo "Creating tag with input parameters..."
 
 			// Create tag
-			ABI_TAG_NAME = createAbinitioTag(taskId		: params.ABI_BUILD_TASK_ID, 
+			createAbinitioTag(taskId		: params.ABI_BUILD_TASK_ID, 
 					  		     taskComments 	: params.ABI_BUILD_COMMENT,
 					  		     buildBranch 	: params.ABI_BUILD_BRANCH,
 					   		     buildDomain 	: params.ABI_BUILD_DOMAIN,
