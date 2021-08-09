@@ -120,9 +120,9 @@ pipeline {
                 		}
         		}
 
-        		failure {
-            			// sendNotifications currentBuild.result
-                                echo "Build failed"
+        		failure {            			
+                                echo "Build failed for invalid input parameters passed"
+			        // sendNotifications currentBuild.result
         		}
     		}
 
@@ -159,8 +159,8 @@ pipeline {
         		}
 
         		failure {
+                                echo "Build failed. Could not create tags"
             			// sendNotifications currentBuild.result
-                                echo "Build failed"
         		}
     		}
         }
