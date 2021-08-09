@@ -2,4 +2,4 @@
 
 import sys
 
-print 'Dummy tag name :', str(sys.argv)
+print 'I am done creating tag..........'
