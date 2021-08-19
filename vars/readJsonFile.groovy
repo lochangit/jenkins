@@ -31,7 +31,11 @@ def call(Map fileName = [:]) {
                 ]
 }'''
 
-  echo jsonObj.tagList[0].tagName
+    for (int i = 0; i < jsonObj.tagList.size(); i++) {
+        echo jsonObj.tagList[i].tagName
+        echo jsonObj.tagList[i].projectPath
+    }
+
 } 
 
 
