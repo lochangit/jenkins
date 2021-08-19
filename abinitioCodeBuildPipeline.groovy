@@ -140,6 +140,8 @@ pipeline {
             	steps {
 			echo "Creating tag with input parameters..."
 
+                        readJsonFile(name : "${env.WORKSPACE}/test_json")
+
 			// Create tag
 			createAbinitioTag(taskId 	: params.ABI_BUILD_TASK_ID, 
 					  taskComments 	: params.ABI_BUILD_COMMENT,
