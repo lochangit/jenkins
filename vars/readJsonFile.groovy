@@ -6,7 +6,7 @@
 def call(Map fileName = [:]) { 
   // def jsonObj = readJSON file: "${fileName.name}"
 
-  def jsonObj = readJSON text: '''{
+  def jsonObj = readJson text: '''{
     "tagList": [
       		  {
         	    "tagName" 	   : "sample_tag_1",
