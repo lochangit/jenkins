@@ -140,6 +140,35 @@ pipeline {
             	steps {
 			echo "Creating tag with input parameters..."
 
+                  	script {
+                   		def data = '''{
+    "tagList": [
+      		  {
+        	    "tagName" 	   : "sample_tag_1",
+		    "projectPath"  : "/project1/path",
+    		    "objectList"   : ["obj1",
+      		  	   	      "obj2" ]
+      		  },
+
+      		  {
+        	    "tagName" 	   : "sample_tag_2",
+		    "projectPath"  : "/project2/path",
+    		    "objectList"   : ["obj4",
+      		  	   	      "obj5" ]
+      		  },
+
+      		  {
+        	    "tagName" 	   : "sample_tag_3",
+		    "projectPath"  : "/project3/path",
+    		    "objectList"   : ["obj6",
+      		  	   	      "obj7" ]
+      		  }
+                ]
+}'''
+
+                   		writeFile(file: 'test_json', text: data)
+               		}
+
                         readJsonFile(name : "${env.WORKSPACE}/test_json")
 
 			// Create tag
